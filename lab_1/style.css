@@ -1,0 +1,64 @@
+:root {
+    --color-background: #d5cfb5;
+    --color-main:#8a100b;
+    --color-accent:#b29d6c;
+    --color-secondary:#726158;
+}
+
+body {
+    background-color: var(--color-background);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.header h1 {
+    color: var(--color-main);
+    position: relative;
+    width: 50%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+/* bc logo image */
+.header #logo {
+    background-color: var(--color-background);
+    float: left;
+    width: 11%;
+    height: auto;
+    margin: 1%;
+}
+
+/* facts */
+#content .generated-content{
+    background-color: var(--color-accent);
+    color: var(--color-main);
+    font-style: italic;
+    border-radius: 4px;
+    width: 50%;
+}
+
+/* button */
+#generate, #clear-facts{
+    font-size: 1.5em;
+    color: var(--color-main);
+    border-color: var(--color-main);
+    padding: 1em;
+    line-height: 0em;
+    margin-left: 0.9em;
+}
+
+/* hovering on button */
+#generate:hover, #clear-facts:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+/* link */
+a:link, a:visited{
+    color: var(--color-main);
+}
+
+/* mouse over link */
+a:hover {
+    color: var(--color-secondary);
+}
+
