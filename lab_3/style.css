@@ -1,0 +1,13 @@
+/* Style circle */
+circle {
+    fill: rgb(45, 183, 135);
+}
+
+/* Style Rectangles */
+rect{
+    fill: rgb(106, 111, 182);
+}
+/* Style title of scatter plot */
+.city-count{
+    font-size: 1.5em;
+}

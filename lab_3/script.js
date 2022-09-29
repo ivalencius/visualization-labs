@@ -62,7 +62,7 @@ const city_async = async () => {
     let mouseover = function () {
         scattertip.style("opacity", 1)
         d3.select(this)
-            .style("stroke", "black")
+            // .style("stroke", "grey")
             .style("opacity", 1)
     }
 
@@ -72,8 +72,6 @@ const city_async = async () => {
             // Need to offset because event.pageX is relative (???)
             .style("left", parseInt(event.pageX)-parseInt(d3.select(this).attr("cx"))+"px")
             .style("top", parseInt(event.pageY)+20+"px")
-
-        console.log(parseInt(d3.select(this).attr("r")))
     }
 
     let mouseleave = function() {
@@ -82,7 +80,7 @@ const city_async = async () => {
             .duration(200)
 
         d3.select(this)
-            .style("stroke", "none")
+            // .style("stroke", "none")
             .style("opacity", 0.5)
     }
 
@@ -155,6 +153,9 @@ const buildings_async = async () => {
             // Add attributes
             d3.select(".height").text(d.height_m + " m ("+d.height_ft+" ft)")
             d3.select(".city").text(d.city)
+            d3.select(".country").text(d.country)
+            d3.select(".floors").text(d.floors)
+            d3.select(".completed").text(d.completed)
         })
         // Can't use 'this' with arrow function
         .on("mouseover", function() {
