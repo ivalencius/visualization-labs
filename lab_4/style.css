@@ -1,0 +1,37 @@
+/* Edit Circles in Scatter Plot */
+circle {
+    /* fill: rgb(23, 175, 46); */
+    stroke:  rgb(255, 255, 255);
+}
+
+h2 {
+	color:#333;
+	margin-left: 5%;
+	margin-top: 2%;
+}
+
+/* line styles */
+.axis path,
+.axis line { 
+	fill: none;
+	stroke: #333;
+	shape-rendering: crispEdges;
+}
+/* labels */
+.axis text {
+	font-family: sans-serif;
+	font-size: 11px;
+}
+
+.tooltip{
+	position:fixed;
+	opacity: 0;
+	background-color: #333;
+	color: rgb(255, 255, 255);
+	/* border-color:rgb(255, 255, 255);
+	border-width: "2px";
+	border: solid;*/
+    border-radius: 20px;
+	/* margin: "20px"; */
+    padding: 10px;
+  }
