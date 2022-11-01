@@ -83,7 +83,7 @@ Promise.all([ // load multiple files
         .data(airports.links)
         .join(
             enter => enter.append("line")
-                .style("stroke", "black")
+                .style("stroke", "red")
                 // .attr("x1", d => d.source.x)
                 // .attr("y1", d => d.source.y)
                 // .attr("x2", d => d.target.x)
