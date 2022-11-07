@@ -92,7 +92,7 @@ d3.csv("driving.csv", d3.autoType).then(data => {
     svg.append("text")
 		  .attr('x', width)
 		  .attr('y', height-margin.bottom/2)
-		  .text("Miles per gallon")
+		  .text("Miles per person per year")
           .attr("text-anchor","end")
           .style("font-weight","bold")
           .call(halo)
