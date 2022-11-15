@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+  <title>Lab_9</title>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/bcviscourse/datasets/master/lab9-covidtracking.csv"
+  },
+  "transform": [{"as": "fips", "calculate": "pad(datum.fips, 2, '0', 'left')"}],
+  "vconcat": [
+    {
+      "width": 1000,
+      "height": 200,
+      "mark": {"type": "point", "tooltip": true},
+      "title": "State Data",
+      "params": [
+        {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+      ],
+      "encoding": {
+        "x": {"field": "positive", "type": "quantitative"},
+        "y": {"field": "death", "type": "quantitative"},
+        "color": {
+          "condition": {
+            "param": "brush",
+            "field": "dataQualityGrade",
+            "type": "nominal"
+          },
+          "value": "gray"
+        }
+      }
+    },
+    {
+      "repeat": ["hospitalizedCumulative", "recovered"],
+      "columns": 2,
+      "transform": [
+        {
+          "lookup": "fips",
+          "from": {
+            "data": {
+              "url": "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json",
+              "format": {
+                "type": "topojson",
+                "feature": "states",
+                "parse": {"id": "number"}
+              }
+            },
+            "key": "id"
+          },
+          "as": "geo"
+        }
+      ],
+      "spec": {
+        "width": 400,
+        "height": 400,
+        "mark": {"type": "geoshape"},
+        "projection": {"type": "albersUsa"},
+        "encoding": {
+          "shape": {"field": "geo", "type": "geojson"},
+          "color": {
+            "condition": {
+              "param": "brush",
+              "field": {"repeat": "repeat"},
+              "type": "quantitative"
+            },
+            "value": "grey"
+          }
+        }
+      },
+      "resolve": {"scale": {"color": "independent"}}
+    }
+  ],
+  "config": {}
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
